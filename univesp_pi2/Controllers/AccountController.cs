@@ -18,6 +18,27 @@ namespace univesp_pi2.Controllers
             return View(viewModel);
         }
 
+        public IActionResult Register()
+{
+    // Retorna a view de cadastro (Register.cshtml)
+    return View();
+}
+
+[HttpPost]
+public IActionResult Register(RegisterViewModel model)
+{
+    if (ModelState.IsValid)
+    {
+     
+        Console.WriteLine($"Novo usuário registrado: {model.Nome} - {model.Email}");
+      
+        return RedirectToAction("Index", "Login");
+    }
+
+    
+    return View(model);
+}
+
         [HttpPost]
         public IActionResult EditProfile([FromBody] ProfileViewModel model)
         {
